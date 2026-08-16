@@ -1,0 +1,22 @@
+---
+import PageIntro from "../components/PageIntro.astro";
+import { business } from "../config/business.config";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Contact from "../sections/Contact.astro";
+import FinalCTA from "../sections/FinalCTA.astro";
+import Services from "../sections/Services.astro";
+import { pageTitle } from "../utils/seo";
+
+const description = `Explore ${business.name}'s professional ${business.category.toLowerCase()} options and request a clear, no-pressure quote.`;
+---
+
+<BaseLayout business={business} title={pageTitle(business, "Services")} {description} path="/services">
+  <PageIntro
+    eyebrow="Services"
+    headline="Helpful solutions, delivered the right way."
+    body="Every project starts with listening. We’ll understand what you need, explain the options, and complete the work with care."
+  />
+  <Services business={business} />
+  <FinalCTA business={business} />
+  <Contact business={business} />
+</BaseLayout>

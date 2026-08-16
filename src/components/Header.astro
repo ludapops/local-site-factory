@@ -1,0 +1,44 @@
+---
+import type { BusinessConfig } from "../config/types";
+import { toTelephoneHref } from "../utils/phone";
+
+interface Props {
+  business: BusinessConfig;
+}
+
+const { business } = Astro.props;
+const phoneHref = toTelephoneHref(business.contact.phone);
+---
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="/" aria-label={`${business.name} home`}>
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>{business.shortName ?? business.name}</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="/services">Services</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <a class="header-call" href={phoneHref} aria-label={`Call ${business.name}`}>
+      <span class="status-dot" aria-hidden="true"></span>
+      {business.contact.phone}
+    </a>
+
+    <details class="mobile-menu">
+      <summary aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </summary>
+      <nav aria-label="Mobile navigation">
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href={phoneHref}>Call {business.contact.phone}</a>
+      </nav>
+    </details>
+  </div>
+</header>

@@ -1,0 +1,25 @@
+---
+import type { CTA } from "../config/types";
+
+interface Props extends CTA {
+  variant?: "primary" | "secondary" | "text";
+  class?: string;
+}
+
+const {
+  label,
+  href,
+  ariaLabel,
+  variant = "primary",
+  class: className = "",
+} = Astro.props;
+---
+
+<a
+  class:list={["button", `button--${variant}`, className]}
+  href={href}
+  aria-label={ariaLabel}
+>
+  <span>{label}</span>
+  <span aria-hidden="true">↗</span>
+</a>

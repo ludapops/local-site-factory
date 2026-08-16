@@ -1,0 +1,18 @@
+---
+import PageIntro from "../components/PageIntro.astro";
+import { business } from "../config/business.config";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Contact from "../sections/Contact.astro";
+import { pageTitle } from "../utils/seo";
+
+const description = `Contact ${business.name} to discuss your project, ask a question, or request a quote in ${business.contact.city ?? "your area"}.`;
+---
+
+<BaseLayout business={business} title={pageTitle(business, "Contact")} {description} path="/contact">
+  <PageIntro
+    eyebrow="Contact"
+    headline="A better project starts with a clear conversation."
+    body="Call us directly or send the details of what you need. We’ll help you understand what comes next."
+  />
+  <Contact business={business} />
+</BaseLayout>

@@ -1,0 +1,15 @@
+---
+import type { BusinessConfig } from "../config/types";
+import { toTelephoneHref } from "../utils/phone";
+
+interface Props {
+  business: BusinessConfig;
+}
+
+const { business } = Astro.props;
+---
+
+<nav class="mobile-action-bar" aria-label="Quick contact actions">
+  <a href={toTelephoneHref(business.contact.phone)}>Call now</a>
+  <a href="/contact#contact">Get a quote</a>
+</nav>

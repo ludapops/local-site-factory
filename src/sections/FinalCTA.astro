@@ -1,0 +1,24 @@
+---
+import Button from "../components/Button.astro";
+import type { BusinessConfig } from "../config/types";
+
+interface Props {
+  business: BusinessConfig;
+}
+
+const { business } = Astro.props;
+const cta = business.finalCTA;
+---
+
+{cta && (
+  <section class="section final-cta">
+    <div class="shell final-cta__inner">
+      <div>
+        <p class="eyebrow">Let’s talk</p>
+        <h2>{cta.headline}</h2>
+        {cta.body && <p>{cta.body}</p>}
+      </div>
+      <Button {...cta.primaryCTA} />
+    </div>
+  </section>
+)}

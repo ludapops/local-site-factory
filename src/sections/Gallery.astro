@@ -1,0 +1,35 @@
+---
+import type { GalleryImage } from "../config/types";
+
+interface Props {
+  images: GalleryImage[];
+}
+
+const { images } = Astro.props;
+---
+
+{images.length > 0 && (
+  <section class="section gallery" aria-labelledby="gallery-title">
+    <div class="shell">
+      <div class="section-heading section-heading--compact">
+        <div>
+          <p class="eyebrow">Recent work</p>
+          <h2 id="gallery-title">Care you can see in the details.</h2>
+        </div>
+      </div>
+      <div class="gallery-grid">
+        {images.map((image, index) => (
+          <figure class:list={[index === 0 && "gallery-feature"]}>
+            <img
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              loading="lazy"
+            />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

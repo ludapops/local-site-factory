@@ -1,0 +1,26 @@
+---
+import { business } from "../config/business.config";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import About from "../sections/About.astro";
+import Contact from "../sections/Contact.astro";
+import FinalCTA from "../sections/FinalCTA.astro";
+import Gallery from "../sections/Gallery.astro";
+import Hero from "../sections/Hero.astro";
+import Reviews from "../sections/Reviews.astro";
+import Services from "../sections/Services.astro";
+---
+
+<BaseLayout
+  business={business}
+  title={business.seo.title}
+  description={business.seo.description}
+  path="/"
+>
+  <Hero business={business} />
+  <Reviews business={business} />
+  <Services business={business} showAllLink />
+  <About business={business} showLink />
+  {business.gallery && <Gallery images={business.gallery} />}
+  <FinalCTA business={business} />
+  <Contact business={business} />
+</BaseLayout>

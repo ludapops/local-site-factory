@@ -1,0 +1,45 @@
+---
+import Button from "../components/Button.astro";
+import type { BusinessConfig } from "../config/types";
+
+interface Props {
+  business: BusinessConfig;
+}
+
+const { business } = Astro.props;
+---
+
+<section class="hero">
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      {business.hero.eyebrow && <p class="eyebrow">{business.hero.eyebrow}</p>}
+      <h1>{business.hero.headline}</h1>
+      <p class="hero-lede">{business.hero.subheadline}</p>
+      <div class="button-row">
+        <Button {...business.hero.primaryCTA} />
+        {business.hero.secondaryCTA && (
+          <Button {...business.hero.secondaryCTA} variant="secondary" />
+        )}
+      </div>
+      <ul class="trust-list" aria-label="Service promises">
+        <li>Clear estimates</li>
+        <li>Friendly local team</li>
+        <li>Quality-first work</li>
+      </ul>
+    </div>
+
+    <div class="hero-media">
+      <img
+        src={business.hero.image.src}
+        alt={business.hero.image.alt}
+        width={business.hero.image.width}
+        height={business.hero.image.height}
+        fetchpriority="high"
+      />
+      <div class="hero-card">
+        <span>Trusted local service</span>
+        <strong>{business.contact.city ?? "Your community"}</strong>
+      </div>
+    </div>
+  </div>
+</section>

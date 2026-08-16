@@ -1,0 +1,77 @@
+---
+import type { BusinessConfig } from "../config/types";
+import { toTelephoneHref } from "../utils/phone";
+
+interface Props {
+  business: BusinessConfig;
+}
+
+const { business } = Astro.props;
+const endpoint = business.contact.formEndpoint;
+const location = [business.contact.address, business.contact.city, business.contact.state]
+  .filter(Boolean)
+  .join(", ");
+---
+
+<section class="section contact" id="contact">
+  <div class="shell contact-grid">
+    <div class="contact-copy">
+      <p class="eyebrow">Start a conversation</p>
+      <h2>Tell us what you’re working on.</h2>
+      <p>
+        Share a few details and we’ll help you understand the next best step for
+        your project.
+      </p>
+      <div class="contact-options">
+        <a href={toTelephoneHref(business.contact.phone)}>
+          <span>Call</span>
+          <strong>{business.contact.phone}</strong>
+        </a>
+        {business.contact.email && (
+          <a href={`mailto:${business.contact.email}`}>
+            <span>Email</span>
+            <strong>{business.contact.email}</strong>
+          </a>
+        )}
+        {location && (
+          <div>
+            <span>Service area</span>
+            <strong>{location}</strong>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <form
+      class="contact-form"
+      action={endpoint}
+      method="post"
+      aria-describedby={!endpoint ? "form-status" : undefined}
+    >
+      <div class="field-row">
+        <label>
+          <span>Name</span>
+          <input name="name" type="text" autocomplete="name" required />
+        </label>
+        <label>
+          <span>Phone</span>
+          <input name="phone" type="tel" autocomplete="tel" required />
+        </label>
+      </div>
+      <label>
+        <span>Email</span>
+        <input name="email" type="email" autocomplete="email" required />
+      </label>
+      <label>
+        <span>Message / project details</span>
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit" disabled={!endpoint}>Send request</button>
+      {!endpoint && (
+        <p class="form-status" id="form-status">
+          Online form delivery is not connected yet. Please call or email us instead.
+        </p>
+      )}
+    </form>
+  </div>
+</section>

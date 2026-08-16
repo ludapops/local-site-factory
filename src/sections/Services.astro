@@ -1,0 +1,51 @@
+---
+import Button from "../components/Button.astro";
+import type { BusinessConfig } from "../config/types";
+
+interface Props {
+  business: BusinessConfig;
+  showAllLink?: boolean;
+}
+
+const { business, showAllLink = false } = Astro.props;
+---
+
+<section class="section services" id="services">
+  <div class="shell">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">How we can help</p>
+        <h2>Practical service, built around your needs.</h2>
+      </div>
+      <p>
+        From the first call to the final walkthrough, expect thoughtful work and
+        communication that keeps you informed.
+      </p>
+    </div>
+
+    <div class="service-grid">
+      {business.services.map((service, index) => (
+        <article class="service-card">
+          <span class="service-number">0{index + 1}</span>
+          {service.image && (
+            <img
+              src={service.image.src}
+              alt={service.image.alt}
+              width={service.image.width}
+              height={service.image.height}
+              loading="lazy"
+            />
+          )}
+          <h3>{service.name}</h3>
+          <p>{service.description}</p>
+        </article>
+      ))}
+    </div>
+
+    {showAllLink && (
+      <div class="section-action">
+        <Button label="View all services" href="/services" variant="text" />
+      </div>
+    )}
+  </div>
+</section>

@@ -1,0 +1,41 @@
+---
+import Button from "../components/Button.astro";
+import type { BusinessConfig } from "../config/types";
+
+interface Props {
+  business: BusinessConfig;
+  showLink?: boolean;
+}
+
+const { business, showLink = false } = Astro.props;
+---
+
+<section class="section about" id="about">
+  <div class:list={["shell", "about-grid", !business.about.image && "about-grid--no-image"]}>
+    {business.about.image && (
+      <div class="about-media">
+        <img
+          src={business.about.image.src}
+          alt={business.about.image.alt}
+          width={business.about.image.width}
+          height={business.about.image.height}
+          loading="lazy"
+        />
+        <span class="image-caption">Local people. Professional standards.</span>
+      </div>
+    )}
+    <div class="about-copy">
+      <p class="eyebrow">Why choose {business.shortName ?? business.name}</p>
+      <h2>{business.about.headline}</h2>
+      <p>{business.about.body}</p>
+      <dl class="value-list">
+        <div><dt>01</dt><dd>Clear communication</dd></div>
+        <div><dt>02</dt><dd>Respect for your space</dd></div>
+        <div><dt>03</dt><dd>Work built to last</dd></div>
+      </dl>
+      {showLink && (
+        <Button label="Meet our approach" href="/about" variant="text" />
+      )}
+    </div>
+  </div>
+</section>

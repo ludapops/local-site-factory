@@ -1,0 +1,29 @@
+---
+import ReviewCard from "../components/ReviewCard.astro";
+import type { BusinessConfig } from "../config/types";
+
+interface Props {
+  business: BusinessConfig;
+}
+
+const { business } = Astro.props;
+---
+
+<section class="section reviews" aria-labelledby="reviews-title">
+  <div class="shell">
+    <div class="review-heading">
+      <div>
+        <p class="eyebrow">Neighbors helping neighbors</p>
+        <h2 id="reviews-title">Service that earns the next call.</h2>
+      </div>
+      <div class="rating-summary" aria-label="Five-star example rating">
+        <span aria-hidden="true">★★★★★</span>
+        <strong>Built for trust</strong>
+      </div>
+    </div>
+    <div class="review-grid">
+      {business.reviews.map((review) => <ReviewCard review={review} />)}
+    </div>
+    <p class="example-note">Testimonials shown are example content for this reusable demo.</p>
+  </div>
+</section>

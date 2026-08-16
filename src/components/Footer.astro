@@ -1,0 +1,46 @@
+---
+import type { BusinessConfig } from "../config/types";
+import { toTelephoneHref } from "../utils/phone";
+
+interface Props {
+  business: BusinessConfig;
+}
+
+const { business } = Astro.props;
+const year = new Date().getFullYear();
+const location = [business.contact.city, business.contact.state]
+  .filter(Boolean)
+  .join(", ");
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      <a class="brand brand--footer" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>{business.shortName ?? business.name}</span>
+      </a>
+      <p>{business.hero.subheadline}</p>
+    </div>
+
+    <div>
+      <h2>Explore</h2>
+      <a href="/services">Services</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </div>
+
+    <div>
+      <h2>Get in touch</h2>
+      <a href={toTelephoneHref(business.contact.phone)}>{business.contact.phone}</a>
+      {business.contact.email && (
+        <a href={`mailto:${business.contact.email}`}>{business.contact.email}</a>
+      )}
+      {location && <span>{location}</span>}
+    </div>
+  </div>
+  <div class="shell footer-bottom">
+    <span>© {year} {business.name}</span>
+    <span>Local service, thoughtfully delivered.</span>
+  </div>
+</footer>

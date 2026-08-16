@@ -1,0 +1,68 @@
+---
+import DemoBanner from "../components/DemoBanner.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import MobileActionBar from "../components/MobileActionBar.astro";
+import type { BusinessConfig } from "../config/types";
+import {
+  absoluteAssetUrl,
+  canonicalUrl,
+  localBusinessJsonLd,
+} from "../utils/seo";
+import "../styles/global.css";
+
+interface Props {
+  business: BusinessConfig;
+  title: string;
+  description: string;
+  path: string;
+}
+
+const { business, title, description, path } = Astro.props;
+const demoMode = import.meta.env.PUBLIC_DEMO_MODE === "true";
+const canonical = canonicalUrl(business, path);
+const socialImage = absoluteAssetUrl(business, business.seo.socialImage);
+const jsonLd = localBusinessJsonLd(business);
+const themeStyle = [
+  `--color-primary:${business.theme.primary}`,
+  `--color-secondary:${business.theme.secondary}`,
+  `--color-accent:${business.theme.accent}`,
+  `--color-background:${business.theme.background ?? "#fbfaf7"}`,
+  `--color-foreground:${business.theme.foreground ?? "#17201d"}`,
+  `--color-surface:${business.theme.surface ?? "#ffffff"}`,
+].join(";");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {demoMode && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    <meta name="twitter:card" content={socialImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body style={themeStyle}>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    {demoMode && <DemoBanner />}
+    <Header business={business} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer business={business} />
+    <MobileActionBar business={business} />
+  </body>
+</html>

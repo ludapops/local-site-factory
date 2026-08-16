@@ -1,0 +1,22 @@
+---
+import PageIntro from "../components/PageIntro.astro";
+import { business } from "../config/business.config";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import About from "../sections/About.astro";
+import Contact from "../sections/Contact.astro";
+import Reviews from "../sections/Reviews.astro";
+import { pageTitle } from "../utils/seo";
+
+const description = `Learn how ${business.name} approaches every local project with clear communication, careful work, and respect.`;
+---
+
+<BaseLayout business={business} title={pageTitle(business, "About")} {description} path="/about">
+  <PageIntro
+    eyebrow="About us"
+    headline="The kind of local team you’re glad you called."
+    body="We built our approach around a simple idea: skilled work matters more when the customer experience is just as dependable."
+  />
+  <About business={business} />
+  <Reviews business={business} />
+  <Contact business={business} />
+</BaseLayout>

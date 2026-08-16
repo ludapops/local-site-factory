@@ -1,0 +1,21 @@
+---
+import type { BusinessReview } from "../config/types";
+
+interface Props {
+  review: BusinessReview;
+}
+
+const { review } = Astro.props;
+const rating = Math.max(0, Math.min(5, Math.round(review.rating)));
+---
+
+<article class="review-card">
+  <div class="stars" aria-label={`${rating} out of 5 stars`}>
+    {Array.from({ length: rating }).map(() => <span aria-hidden="true">★</span>)}
+  </div>
+  <blockquote>“{review.text}”</blockquote>
+  <footer>
+    <strong>{review.author}</strong>
+    {review.source && <span>{review.source}</span>}
+  </footer>
+</article>
