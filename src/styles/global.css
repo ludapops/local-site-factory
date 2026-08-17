@@ -1106,3 +1106,327 @@ h3 {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* VMEL prospect direction: premium editorial barbershop */
+body {
+  background: var(--color-background);
+}
+
+body::before {
+  background-image:
+    linear-gradient(rgba(20, 21, 21, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 21, 21, 0.025) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+#services,
+#work,
+#about {
+  scroll-margin-top: 5rem;
+}
+
+.demo-banner {
+  color: var(--color-primary);
+  background: var(--color-accent);
+}
+
+.demo-banner span {
+  border-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  color: var(--color-secondary);
+  background: color-mix(in srgb, var(--color-primary) 94%, transparent);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.header-inner {
+  min-height: 5.5rem;
+}
+
+.brand {
+  font-size: 1.08rem;
+  letter-spacing: 0.18em;
+}
+
+.brand-mark {
+  display: grid;
+  width: 2.1rem;
+  height: 2.1rem;
+  place-items: center;
+  color: var(--color-primary);
+  background: var(--color-accent);
+  border-radius: 50%;
+  transform: none;
+}
+
+.brand-mark::after {
+  position: static;
+  width: auto;
+  height: auto;
+  color: inherit;
+  background: transparent;
+  border-radius: 0;
+  content: "V";
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.desktop-nav a {
+  color: color-mix(in srgb, var(--color-secondary) 76%, transparent);
+}
+
+.header-call {
+  color: var(--color-accent);
+}
+
+.status-dot {
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 16%, transparent);
+}
+
+.hero {
+  min-height: calc(100svh - 5.5rem);
+  color: var(--color-secondary);
+  background: var(--color-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.82fr);
+}
+
+.hero h1 {
+  max-width: 8.5ch;
+  margin-bottom: 2rem;
+  font-size: clamp(4.25rem, 8.7vw, 8.25rem);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.hero-lede,
+.hero .trust-list {
+  color: color-mix(in srgb, var(--color-secondary) 70%, transparent);
+}
+
+.hero .button--primary {
+  color: var(--color-primary);
+  background: var(--color-accent);
+}
+
+.hero .button--primary:hover {
+  background: color-mix(in srgb, var(--color-accent) 88%, white);
+}
+
+.hero .button--secondary {
+  color: var(--color-secondary);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.hero .button--secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-media::before {
+  inset: -1.25rem 2.25rem 1.5rem -2.25rem;
+  background: var(--color-accent);
+  border-radius: 18rem 18rem 1.5rem 1.5rem;
+  opacity: 0.45;
+  transform: rotate(-2deg);
+}
+
+.hero-media > img {
+  aspect-ratio: 4 / 5.35;
+  object-position: 50% center;
+  border-radius: 18rem 18rem var(--radius-md) var(--radius-md);
+  filter: saturate(0.75) contrast(1.03);
+}
+
+.hero-card {
+  right: -1rem;
+  bottom: 2.25rem;
+  color: var(--color-primary);
+  background: var(--color-accent);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+  border-radius: 0.35rem;
+}
+
+.hero-card span {
+  color: color-mix(in srgb, var(--color-primary) 66%, transparent);
+}
+
+.reviews {
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.review-card {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(255, 255, 255, 0.12);
+  border-radius: 0.35rem;
+}
+
+.services {
+  background: var(--color-secondary);
+}
+
+.service-card {
+  color: var(--color-secondary);
+  background: var(--color-primary);
+  border: 0;
+  border-radius: 0.35rem;
+}
+
+.service-card:nth-child(2) {
+  transform: translateY(2.5rem);
+}
+
+.service-card:nth-child(2):hover {
+  transform: translateY(calc(2.5rem - 5px));
+}
+
+.service-card p {
+  color: color-mix(in srgb, var(--color-secondary) 67%, transparent);
+}
+
+.about {
+  background: #ded6c9;
+}
+
+.about-media img {
+  aspect-ratio: 4 / 5.2;
+  border-radius: 0.35rem;
+  filter: saturate(0.78) contrast(1.02);
+}
+
+.image-caption {
+  right: -1rem;
+  bottom: 1.5rem;
+  color: var(--color-primary);
+  background: var(--color-accent);
+  border-radius: 0.25rem;
+}
+
+.gallery {
+  color: var(--color-secondary);
+  background: var(--color-primary);
+}
+
+.gallery .eyebrow {
+  color: var(--color-accent);
+}
+
+.gallery-grid {
+  align-items: end;
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+.gallery-grid figure {
+  border-radius: 0.35rem;
+}
+
+.gallery-grid figure:nth-child(2) {
+  margin-bottom: clamp(0rem, 7vw, 7rem);
+}
+
+.gallery-grid img,
+.gallery-feature img {
+  min-height: 0;
+  aspect-ratio: 4 / 5.2;
+  object-fit: cover;
+}
+
+.final-cta {
+  color: var(--color-primary);
+  background: var(--color-accent);
+}
+
+.final-cta .eyebrow {
+  color: color-mix(in srgb, var(--color-primary) 68%, transparent);
+}
+
+.final-cta .button--primary {
+  color: var(--color-secondary);
+  background: var(--color-primary);
+}
+
+.site-footer {
+  background: #090a0a;
+}
+
+.brand--footer .brand-mark {
+  color: var(--color-primary);
+  background: var(--color-accent);
+}
+
+@media (max-width: 860px) {
+  .mobile-menu summary {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+  .mobile-menu nav {
+    color: var(--color-foreground);
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-media > img {
+    aspect-ratio: 4 / 4.6;
+    border-radius: 14rem 14rem var(--radius-md) var(--radius-md);
+  }
+
+  .service-card:nth-child(2),
+  .service-card:nth-child(2):hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    min-height: 4.75rem;
+  }
+
+  .hero {
+    padding-top: 4.25rem;
+  }
+
+  .hero h1 {
+    max-width: 9ch;
+    font-size: clamp(4.1rem, 18vw, 5.7rem);
+  }
+
+  .hero-media > img {
+    aspect-ratio: 4 / 5;
+    border-radius: 10rem 10rem var(--radius-md) var(--radius-md);
+  }
+
+  .hero-media::before {
+    inset: -1rem 1.2rem 1rem -1.2rem;
+    border-radius: 10rem 10rem var(--radius-md) var(--radius-md);
+  }
+
+  .hero-card {
+    right: 0.75rem;
+    bottom: -1.25rem;
+    min-width: 11.5rem;
+  }
+
+  .gallery-grid figure:nth-child(2) {
+    margin-bottom: 0;
+  }
+
+  .gallery-grid img,
+  .gallery-feature img {
+    aspect-ratio: 4 / 5;
+  }
+}

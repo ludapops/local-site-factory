@@ -13,17 +13,17 @@ const { business } = Astro.props;
   <div class="shell">
     <div class="review-heading">
       <div>
-        <p class="eyebrow">Neighbors helping neighbors</p>
-        <h2 id="reviews-title">Service that earns the next call.</h2>
+        <p class="eyebrow">The word around Miami</p>
+        <h2 id="reviews-title">A reputation built one chair at a time.</h2>
       </div>
-      <div class="rating-summary" aria-label="Five-star example rating">
+      <div class="rating-summary" aria-label="Five-star client rating">
         <span aria-hidden="true">★★★★★</span>
-        <strong>Built for trust</strong>
+        <strong>393 reviews · 5.0 average</strong>
       </div>
     </div>
     <div class="review-grid">
       {business.reviews.map((review) => <ReviewCard review={review} />)}
     </div>
-    <p class="example-note">Testimonials shown are example content for this reusable demo.</p>
+    <p class="example-note">Public review excerpts and reputation snapshot.</p>
   </div>
 </section>

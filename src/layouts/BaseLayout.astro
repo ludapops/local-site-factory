@@ -19,7 +19,7 @@ interface Props {
 }
 
 const { business, title, description, path } = Astro.props;
-const demoMode = import.meta.env.PUBLIC_DEMO_MODE === "true";
+const demoMode = business.slug === "vmel-barbershop" || import.meta.env.PUBLIC_DEMO_MODE === "true";
 const canonical = canonicalUrl(business, path);
 const socialImage = absoluteAssetUrl(business, business.seo.socialImage);
 const jsonLd = localBusinessJsonLd(business);

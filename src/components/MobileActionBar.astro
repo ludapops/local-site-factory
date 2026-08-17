@@ -11,5 +11,5 @@ const { business } = Astro.props;
 
 <nav class="mobile-action-bar" aria-label="Quick contact actions">
   <a href={toTelephoneHref(business.contact.phone)}>Call now</a>
-  <a href="/contact#contact">Get a quote</a>
+  <a href={business.hero.primaryCTA.href}>Book now</a>
 </nav>
